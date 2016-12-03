@@ -7,6 +7,8 @@ bb = 0
 
 setup = ->
   createCanvas 512,512
+  pixelDensity 1
+
   slider = createSlider 0, 255, 0
   slider.position 20, 270
   slider.input sliderchange
