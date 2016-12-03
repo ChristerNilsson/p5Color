@@ -51,7 +51,7 @@ showNumbers = ->
   rect 256,0,256,256
 
 setPixel = (i,j,pixel) ->
-  index = 4 * ((0+j) * 512 + 0 + i)
+  index = 4 * (j * 512 + i)
   pixels[index+0] = pixel[0]
   pixels[index+1] = pixel[1]
   pixels[index+2] = pixel[2]
