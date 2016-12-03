@@ -6,7 +6,7 @@ gg = 0
 bb = 0
 
 setup = ->
-  canvas = createCanvas 512,512
+  canvas = createCanvas 512,256
   canvas.position 20,20
   pixelDensity 1
 
