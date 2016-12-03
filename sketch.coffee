@@ -6,48 +6,49 @@ gg = 0
 bb = 0
 
 setup = ->
-  createCanvas 512,512
+  canvas = createCanvas 512,512
+  canvas.position 20,20
   pixelDensity 1
 
   slider = createSlider 0, 255, 0
-  slider.position 20, 270
+  slider.position 20, 285
   slider.input sliderchange
+  slider.size 512,20
 
   input1 = createInput()
-  input1.position 20, 300
-  input2 = createInput()
-  input2.position 20, 330
+  input1.position 20, 320
+  input1.size 256, 20
 
+  input2 = createInput()
+  input2.position 256+20, 320
+  input2.size 256, 20
+
+  sc()
   show()
 
 mousePressed = ->
-  if mouseX<256 and mouseY<256
-    rr = mouseX/255
-    gg = mouseY/255
-    fc rr,gg,bb
-    rect 256,0,256,256
+	if 0 <= mouseX < 256 and 0 <= mouseY < 256
+    rr = mouseX
+    gg = mouseY
     showNumbers()
 
 sliderchange = ->
-  bb = slider.value()/255
-  fc rr,gg,bb
-  rect 256,0,256, 256
+  bb = slider.value()
   show()
 
 show = ->
   loadPixels()
   for r in range 256
     for g in range 256
-      setPixel r,g,[r,g,255*bb,255] 
-  fc rr,gg,bb
-  rect 256,0,256,256
-
+      setPixel r,g,[r,g,bb,255] 
   updatePixels()
   showNumbers()
 
 showNumbers = ->
-  input1.value "#{nf(rr,1,3)}, #{nf(gg,1,3)}, #{nf(bb,1,3)}"
-  input2.value "#{255*rr}, #{255*gg}, #{255*bb}"
+  input1.value "#{nf(rr/255,1,3)}, #{nf(gg/255,1,3)}, #{nf(bb/255,1,3)}"
+  input2.value "#{rr}, #{gg}, #{bb}"
+  fill rr,gg,bb
+  rect 256,0,256,256
 
 setPixel = (i,j,pixel) ->
   index = 4 * ((0+j) * 512 + 0 + i)
