@@ -29,7 +29,7 @@ mousePressed = ->
 sliderchange = ->
   bb = slider.value()/255
   fc rr,gg,bb
-  rect 300,0,256,256
+  rect 300,0,256, 256
   show()
 
 show = ->
