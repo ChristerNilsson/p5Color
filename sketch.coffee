@@ -6,7 +6,7 @@ gg = 0
 bb = 0
 
 setup = ->
-  createCanvas 600,600
+  createCanvas 512,512
   slider = createSlider 0, 255, 0
   slider.position 20, 270
   slider.input sliderchange
@@ -23,13 +23,13 @@ mousePressed = ->
     rr = mouseX/255
     gg = mouseY/255
     fc rr,gg,bb
-    rect 300,0,256,256
+    rect 256,0,256,256
     showNumbers()
 
 sliderchange = ->
   bb = slider.value()/255
   fc rr,gg,bb
-  rect 300,0,256, 256
+  rect 256,0,256, 256
   show()
 
 show = ->
@@ -38,7 +38,7 @@ show = ->
     for g in range 256
       setPixel r,g,[r,g,255*bb,255] 
   fc rr,gg,bb
-  rect 300,0,256,256
+  rect 256,0,256,256
 
   updatePixels()
   showNumbers()
@@ -48,7 +48,7 @@ showNumbers = ->
   input2.value "#{255*rr}, #{255*gg}, #{255*bb}"
 
 setPixel = (i,j,pixel) ->
-  index = 4 * ((0+j) * 600 + 0 + i)
+  index = 4 * ((0+j) * 512 + 0 + i)
   pixels[index+0] = pixel[0]
   pixels[index+1] = pixel[1]
   pixels[index+2] = pixel[2]
