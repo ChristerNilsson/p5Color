@@ -38,9 +38,9 @@ sliderchange = ->
 
 show = ->
   loadPixels()
-  for r in range 256
-    for g in range 256
-      setPixel r,g,[r,g,bb,255] 
+  for r in [0..256]
+    for g in [0..256]
+      setPixel r,g
   updatePixels()
   showNumbers()
 
@@ -50,9 +50,9 @@ showNumbers = ->
   fill rr,gg,bb
   rect 256,0,256,256
 
-setPixel = (i,j,pixel) ->
+setPixel = (i,j) ->
   index = 4 * (j * 512 + i)
-  pixels[index+0] = pixel[0]
-  pixels[index+1] = pixel[1]
-  pixels[index+2] = pixel[2]
-  pixels[index+3] = pixel[3]
+  pixels[index+0] = i
+  pixels[index+1] = j
+  pixels[index+2] = bb
+  pixels[index+3] = 255
